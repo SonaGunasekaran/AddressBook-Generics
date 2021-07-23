@@ -15,10 +15,11 @@ namespace LambaExpression
             AverageAge(list);
             SearchName(list, "Chandler");
             SkipRecord(list);
+            RemoveName(list, "Monica");
         }
         public static void PersonDetails(List<Person> list)
         {
-            list.Add(new Person() { SSN = 1, Name = "Kalus", Age = 65,  Address = "India", });
+            list.Add(new Person() { SSN = 1, Name = "Kalus", Age = 65, Address = "India", });
             list.Add(new Person() { SSN = 2, Name = "Daemon", Age = 15, Address = "Seattle", });
             list.Add(new Person() { SSN = 3, Name = "Chandler", Age = 16, Address = "California", });
             list.Add(new Person() { SSN = 4, Name = "Monica", Age = 85, Address = "Norway", });
@@ -90,9 +91,21 @@ namespace LambaExpression
                 Console.WriteLine("SSN = {0}\tName={1}\tAddress = {2}\tAge={3}", person.SSN, person.Name, person.Address, person.Age);
             }
         }
-
-
+       // Remove the Specific name from the list
+        public static void RemoveName(List<Person> list, string name)
+        {
+            Console.WriteLine(" ");
+            Console.WriteLine("Remove the specific name from the list ");
+            //Lamba expression to Check for specific name
+            var person = list.Find(x => x.Name.Equals(name));
+            if (person != null)
+            {
+                if (list.Remove(person))
+                {
+                    Console.WriteLine("Successfully removed");
+                }
+            }
+        }
     }
-
-    }
+}
 
