@@ -14,13 +14,14 @@ namespace LambaExpression
             RetrieveTenage(list);
             AverageAge(list);
             SearchName(list, "Chandler");
+            SkipRecord(list);
         }
         public static void PersonDetails(List<Person> list)
         {
             list.Add(new Person() { SSN = 1, Name = "Kalus", Age = 65,  Address = "India", });
             list.Add(new Person() { SSN = 2, Name = "Daemon", Age = 15, Address = "Seattle", });
             list.Add(new Person() { SSN = 3, Name = "Chandler", Age = 16, Address = "California", });
-            list.Add(new Person() { SSN = 4, Name = "Monica", Age = 45, Address = "Norway", });
+            list.Add(new Person() { SSN = 4, Name = "Monica", Age = 85, Address = "Norway", });
             //List the details of the person
             foreach (Person person in list)
             {
@@ -77,6 +78,21 @@ namespace LambaExpression
                 Console.WriteLine("{0} is not exists", name);
             }
         }
+        //Skip record from the list for age is greater than 60
+        public static void SkipRecord(List<Person> list)
+        {
+            Console.WriteLine(" ");
+            Console.WriteLine("Skip record from the list for age is greater than 60 ");
+            //Lamba expression to Skip record from the list
+            List<Person> result = list.SkipWhile(p => p.Age > 60).ToList();
+            foreach (Person person in result)
+            {
+                Console.WriteLine("SSN = {0}\tName={1}\tAddress = {2}\tAge={3}", person.SSN, person.Name, person.Address, person.Age);
+            }
+        }
+
 
     }
-}
+
+    }
+
