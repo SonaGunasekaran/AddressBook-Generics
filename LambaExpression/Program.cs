@@ -12,13 +12,14 @@ namespace LambaExpression
             PersonDetails(list);
             Retrieve(list);
             RetrieveTenage(list);
+            AverageAge(list);
         }
         public static void PersonDetails(List<Person> list)
         {
-            list.Add(new Person() { SSN = 1, Name = "Kalus", Age = 72,  Address = "India", });
-            list.Add(new Person() { SSN = 2, Name = "Daemon", Age = 14, Address = "Seattle", });
-            list.Add(new Person() { SSN = 3, Name = "Chandler", Age = 18, Address = "California", });
-            list.Add(new Person() { SSN = 4, Name = "Monica", Age = 65, Address = "Norway", });
+            list.Add(new Person() { SSN = 1, Name = "Kalus", Age = 65,  Address = "India", });
+            list.Add(new Person() { SSN = 2, Name = "Daemon", Age = 15, Address = "Seattle", });
+            list.Add(new Person() { SSN = 3, Name = "Chandler", Age = 16, Address = "California", });
+            list.Add(new Person() { SSN = 4, Name = "Monica", Age = 45, Address = "Norway", });
             //List the details of the person
             foreach (Person person in list)
             {
@@ -49,10 +50,15 @@ namespace LambaExpression
             {
                 Console.WriteLine("SSN = {0}\tName={1}\tAddress = {2}\tAge={3}", person.SSN, person.Name, person.Address, person.Age);
             }
-
         }
-
-
-
+        //Retrieve average age in the list
+        public static void AverageAge(List<Person> list)
+        {
+            Console.WriteLine(" ");
+            Console.WriteLine("Retrieve average age in the list");
+            //Lamba expression to Retrieve average age in the list
+            var result = list.Average(x => x.Age);
+            Console.WriteLine("Average = {0}", result);
+        }
     }
 }
